@@ -4,22 +4,18 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-// You can also log multiple values at once like this:
-console.log(playerName, playerHealth, playerAttack);
-
 // setting up enemy variables
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-// welcome player to game, alert players they are starting the round
-var fight = function() {
+// fight function
+var fight = function(enemyName) {
+    // alert players that they are starting the round
     window.alert("Welcome to Robot Gladiators!");
     
     // ask the player if they would like to fight or skip the fight
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' TO CHOOSE.");
-    // log player response
-    console.log(promptFight);
 
     // if player typed "FIGHT", "fight", or "Fight" then fight
     if (promptFight === "FIGHT" || promptFight === "fight"|| promptFight === "Fight") {
@@ -55,6 +51,7 @@ var fight = function() {
     } else if (promptFight === "SKIP" || promptFight === "skip" || promptFight === "Skip") {
         // confirm player wants to skip the fight. 
         var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+        
         // if yes (true), leave fight
         if (confirmSkip) {
             window.alert (playerName + " has decided to skip this fight. Goodbye!");
@@ -65,12 +62,13 @@ var fight = function() {
         else {
             fight();
         }
-        window.alert(playerName + " has chosen to skip the fight!");
-        
-        window.alert(playerName + " has lost money for skipping the fight. " + playerName + " now has " + playerMoney + " money left.")
+    // if player did not enter fight or skip
     } else {
         window.alert("Please enter a valid option. Try again!");
     }
 };
 
-fight();
+// run fight function with for loop to start the game
+for(var i=0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
