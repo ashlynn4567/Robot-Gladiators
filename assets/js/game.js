@@ -1,3 +1,14 @@
+// ---------------------------------------------------------------------------------------- //
+// TABLE OF CONTENTS: --------------------------------------------------------------------- //
+// -----------------------------------------------------------------------1. GAME FUNCTIONS //
+// -----------------------------------------------------------------------2. GAME VARIABLES //
+// -----------------------------------------------------------------------3. START THE GAME //
+// ---------------------------------------------------------------------------------------- //
+
+
+
+// 1. GAME FUNCTIONS----------------------------------------------------------------------- //
+
 // function to generate a random numeric value
 var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max - min + 1) + min);
@@ -31,8 +42,8 @@ var fight = function(enemy) {
         // if player did not type "SKIP", "Skip", or "skip", then fight
         // player attacks - remove enemy's health by random number based on player's attack power
         var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-        enemy.health = Math.max(0, enemy.health - damage);
         
+        enemy.health = Math.max(0, enemy.health - damage);
         // log enemy.health
         console.log (
             playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining."
@@ -71,42 +82,13 @@ var fight = function(enemy) {
     }
 };
 
-// setting up our player variables
-var playerInfo ={
-    name: window.prompt("What is your robot's name?"),
-    health: 100, 
-    attack: 10, 
-    money: 10,
-    reset: function() {
-        this.health = 100;
-        this.money = 10;
-        this.attack = 10;
-    }
-};
-
-// setting up enemy variables
-var enemyInfo = [
-    {
-        name: "Roborto",
-        attack: randomNumber(10, 14)
-    },
-    {
-        name: "Amy Android",
-        attack: randomNumber(10, 14)
-    },
-    {
-        name: "Robo Trumble",
-        attack: randomNumber (10, 14)
-    }
-];
-
-// expressing the startGame() function to start a new game
+// function to start a new game
 var startGame = function() {
     // reset player stats for every playthrough
     playerInfo.reset();
     
     // fight each enemy robot by looping over them and fighting them one at a time
-    for(var i=0; i < enemyInfo.length; i++) {
+    for (var i=0; i < enemyInfo.length; i++) {
         // if player is still alive, keep fighting
         if (playerInfo.health > 0) {
             // let player know what round they are in, remember that arrays start at 0 so it needs to be +1
@@ -116,7 +98,7 @@ var startGame = function() {
             var pickedEnemyObj = enemyInfo[i];
 
             // reset next enemy.health before starting a new fight
-            pickedEnemyObj = randomNumber(40, 60);
+            pickedEnemyObj.health = randomNumber(40, 60);
 
             // pass the pickedenemy.name variable's value into the fight function, where it will assume the value of the value of the enemy.name parameter
             fight(pickedEnemyObj);
@@ -174,29 +156,15 @@ var shop = function() {
         case "REFILL":
         case "Refill":
         case "refill":
-            if (playerInfo.money >= 7) {
-                window.alert("Refilling player's health by 20 for 7 dollars.");
-                // increase health and decrease money
-                playerInfo.health = playerInfo.health + 20;
-                playerInfo.money = playerInfo.money - 7;
-                break;
-            } else {
-                window.alert("You don't have enough money!");
-            }
+            playerInfo.refillHealth();
+            break;
         
         // upgrade
         case "UPGRADE":
         case "Upgrade":
         case "upgrade":
-            if (playerInfo.money >= 7) {
-                window.alert("Upgrading player's attack by 6 for 7 dollars.");
-                // increase attack and decrease money
-                playerInfo.attack = playerInfo.attack + 6;
-                playerInfo.money = playerInfo.money - 7;
-                break;
-            } else {
-                window.alert("You don't have enough money!");
-            }
+            playerInfo.upgradeAttack();
+            break;
             
         // leave
         case "LEAVE":
@@ -214,6 +182,72 @@ var shop = function() {
             break;
     }
 };
-        
+
+// END GAME FUNCTIONS SECTION-------------------------------------------------------------- //
+
+
+
+// 2. GAME VARIABLES----------------------------------------------------------------------- //
+
+// setting up our player variables
+var playerInfo = {
+    name: window.prompt("What is your robot's name?"),
+    health: 100, 
+    attack: 10, 
+    money: 10,
+    reset: function() {
+        this.health = 100;
+        this.money = 10;
+        this.attack = 10;
+    },
+    refillHealth: function() {
+        if (this.money >= 7) {
+            window.alert("Refilling " + playerInfo.name + "'s health by 20 for 7 dollars.");
+            this.health += 20;
+            this.money -= 7;
+        } else {
+            window.alert("You don't have enough money!");
+        }
+    },
+    upgradeAttack: function() {
+        if (this.money >= 7) {
+            window.alert("Upgrading " + playerInfo.name + "'s attack by 6 for 7 dollars.");
+            this.attack += 6;
+            this.money -= 7;
+        } else {
+            window.alert("You don't have enough money!");
+        }
+    }
+};
+
+// setting up enemy variables
+var enemyInfo = [
+    {
+        name: "Roborto",
+        attack: randomNumber(10, 14)
+    },
+    {
+        name: "Amy Android",
+        attack: randomNumber(10, 14)
+    },
+    {
+        name: "Robo Trumble",
+        attack: randomNumber (10, 14)
+    }
+];
+
+console.log(enemyInfo);
+console.log(enemyInfo[0]);
+console.log(enemyInfo[0].name);
+console.log(enemyInfo[0]['attack']);
+
+// END GAME VARIABLES SECTION-------------------------------------------------------------- //
+
+
+
+// 3. START THE GAME----------------------------------------------------------------------- //
+
 // calling the startGame() function to start the game when the page loads
 startGame();
+
+// END START THE GAME SECTION-------------------------------------------------------------- //
