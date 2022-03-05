@@ -1,6 +1,6 @@
 # Robot-Gladiators
 
-## Fight! Fight! Fight!
+### Fight! Fight! Fight!
 
 Do you like testing your skills and strategical decision-making? Do you like battle-royale, one takes all stakes? Do you like... robots?
 
@@ -18,7 +18,7 @@ Afterwards, the high score is recorded. Try to earn the top spot by giving it yo
 
 <p align="center"><img src=""/></p>
 
-## Try it for yourself!
+## Deployed Site
 
 <a href="https://ashlynn4567.github.io/Robot-Gladiators/">Click here to join the arena and choose your bot!<a>
 
