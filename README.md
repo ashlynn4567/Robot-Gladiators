@@ -23,7 +23,7 @@ Afterwards, the high score is recorded. Try to earn the top spot by giving it yo
 
 ## Deployed Site
 
-Follow [this link](https://ashlynn4567.github.io/Robot-Gladiators/) to view and use our site!
+Follow [this link](https://ashlynn4567.github.io/Robot-Gladiators/) to view and use my site!
 
 ## Features
 
@@ -64,7 +64,7 @@ In the future, I would like to completely revamp this project. I love the idea o
 - The alert boxes have to go. They tend to be more disruptive than anything. It would be fantastic if I could make this a full-on web game. I could add some styling to the page, and/or dynamically created robot icons. I would like to make it so that the user could see these robots moving, or "fighting" after each battle action.
 - The page could refresh between "phases." For example, the fight/battle "phase" could be held on one page, while the shop is on another.
 
-I'm always interested in refactoring code to improve it's functionality. If you would like to suggest your own improvements, you can reach our development team at the links below.
+I'm always interested in refactoring code to improve it's functionality. If you would like to suggest your own improvements, you can reach me at the links below.
 
 - <a href="mailto:ashlynn4567@gmail.com">Email</a>
 - <a href="https://github.com/ashlynn4567">GitHub</a>
